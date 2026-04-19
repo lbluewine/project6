@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Automação de Evolução - BW",
+  "version": "2.8",
+  "description": "Facilita a evolução e monitora mensagens do chat.",
+  "permissions": [
+    "storage",
+    "scripting",
+    "clipboardWrite",
+    "tabs"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://criciuma.celk.com.br/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://deadsimplechat.com/*"],
+      "js": ["chat_monitor.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
